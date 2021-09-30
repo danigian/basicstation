@@ -654,6 +654,7 @@ int sx130xconf_start (struct sx130xconf* sx130xconf, u4_t cca_region) {
     log_flushIO();  // flush output since lgw_start may block for quite some time on some concentrators
 #if defined(CFG_sx1302)
     (void) sys_deviceMode; // TODO: Add device mode to sx1302 hal
+#elif defined(CFG_disablelgwsysdev) // do nothing for ftdi usb
 #else
     lgwx_device_mode = sys_deviceMode;
 #endif

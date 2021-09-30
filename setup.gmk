@@ -46,6 +46,7 @@ ARCH.linuxpico = x86_64-linux-gnu
 ARCH.corecell  = arm-linux-gnueabihf
 ARCH.rpi     = arm-linux-gnueabihf
 ARCH.kerlink = arm-klk-linux-gnueabi
+ARCH.rpirak833 = aarch64-linux-gnu
 ARCH=${ARCH.${platform}}
 
 export TDfull := $(shell cd ${TD} && pwd)
@@ -103,6 +104,7 @@ CFG.linuxV2 = linux lgw2 no_leds lgw2genkey
 CFG.corecell = linux lgw1 no_leds sx1302
 CFG.rpi     = linux lgw1 no_leds
 CFG.kerlink = linux lgw1 no_leds
+CFG.rpirak833 = linux lgw1 no_leds disablelgwsysdev
 
 SD.default = src-linux
 
@@ -117,6 +119,7 @@ DEPS.linuxpico = mbedtls smtcpico
 DEPS.linuxV2 = mbedtls lgw2
 DEPS.corecell = mbedtls lgw1302
 DEPS.rpi     = mbedtls lgw
+DEPS.rpirak833 = mbedtls lgw libmpsse
 
 DEPS = $(or ${DEPS.${platform}}, ${DEPS.default})
 
@@ -147,6 +150,7 @@ LIBS.linuxpico = -llgw ${MBEDLIBS}      -lpthread
 LIBS.corecell = -llgw1302  ${MBEDLIBS}      -lpthread -lrt
 LIBS.rpi     = -llgw   ${MBEDLIBS}      -lpthread
 LIBS.kerlink = -llgw   ${MBEDLIBS} -lrt -lpthread
+LIBS.rpirak833 = -llgw ${MBEDLIBS} -lrt -lmpsse -lm -lpthread
 
 xCFG     =     ${CFG.${ARCH}}     ${CFG.${platform}}     ${CFG.${variant}}    ${CFG.${platform}.${variant}}
 xCFLAGS  =  ${CFLAGS.${ARCH}}  ${CFLAGS.${platform}}  ${CFLAGS.${variant}} ${CFLAGS.${platform}.${variant}}

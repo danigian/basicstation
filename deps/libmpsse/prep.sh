@@ -43,7 +43,7 @@ if [[ ! -d platform-$platform ]]; then
     git clone git-repo platform-$platform
 
     cd platform-${platform}
-    if [ -f ../${platform}.patch ]; then
+    if [ -f ../rak833.patch ]; then
         echo "Applying ${platform}.patch ..."
         git apply ../rak833.patch
     fi

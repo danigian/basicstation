@@ -37,6 +37,7 @@ Building the Station binary from source, requires
 * GNU make
 * git
 * bash
+* libftdi-dev
 
 ## First Steps
 
@@ -45,19 +46,20 @@ The following is a three-step quick start guide on how to build and run Station.
 #### Step 1: Cloning the Station Repository
 
 ``` sourceCode
-git clone https://github.com/lorabasics/basicstation.git
+git clone https://github.com/danigian/basicstation.git
 ```
 
 #### Step 2: Compiling the Station Binary
 
+Depending on whether you are running on x64 or ARM, you have two platform to choose within (rak833x64 or rak833arm)
 ``` sourceCode
 cd basicstation
-make platform=rpi variant=std
+sudo make platform=rak833arm variant=std
 ```
 
 The build process consists of the following steps:
 
-*  Fetch and build dependencies, namely [mbedTLS](https://github.com/ARMmbed/mbedtls) and [libloragw](https://github.com/Lora-net/lora_gateway)
+*  Fetch and build dependencies, namely [mbedTLS](https://github.com/ARMmbed/mbedtls), [libloragw](https://github.com/Lora-net/lora_gateway) and [libmpsse](https://github.com/devttys0/libmpsse)
 *  Setup build environment within subdirectory `build-$platform-$variant/`
 *  Compile station source files into executable `build-$platform-$variant/bin/station`
 

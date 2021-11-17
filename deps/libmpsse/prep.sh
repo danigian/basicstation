@@ -45,7 +45,7 @@ if [[ ! -d platform-$platform ]]; then
     cd platform-${platform}
     if [ -f ../${platform}.patch ]; then
         echo "Applying ${platform}.patch ..."
-        git apply ../${platform}.patch
+        git apply ../rak833.patch
     fi
 fi
 

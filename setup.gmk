@@ -121,8 +121,8 @@ DEPS.linuxpico = mbedtls smtcpico
 DEPS.linuxV2 = mbedtls lgw2
 DEPS.corecell = mbedtls lgw1302
 DEPS.rpi     = mbedtls lgw
-DEPS.rak833arm = mbedtls lgw libmpsse
-DEPS.rak833x64 = mbedtls lgw libmpsse
+DEPS.rak833arm = mbedtls libmpsse lgw
+DEPS.rak833x64 = mbedtls libmpsse lgw
 
 DEPS = $(or ${DEPS.${platform}}, ${DEPS.default})
 

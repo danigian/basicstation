@@ -223,7 +223,7 @@ int ral_tx (txjob_t* txjob, s2ctx_t* s2ctx, int nocca) {
     int err = lgw_send(pkt_tx);
 #endif
     if( err != LGW_HAL_SUCCESS ) {
-        if( err != LGW_LBT_ISSUE ) {
+        if( err != LGW_LBT_NOT_ALLOWED ) {
             LOG(MOD_RAL|ERROR, "lgw_send failed");
             return RAL_TX_FAIL;
         }

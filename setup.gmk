@@ -163,6 +163,7 @@ DEFS    += -DCFG_commit='"$(shell if git rev-parse --git-dir >/dev/null 2>&1; th
 DEFS    += ${xCFG:%=-DCFG_%}
 INCS     = ${VPATH:%=-I%} -I ${TD}/${BD}/include ${xINCS}
 CFLAGS   = -Wall -std=gnu11 ${INCS} ${DEFS} ${xCFLAGS}
+CFLAGS += -DNODEBUG
 LDFLAGS  = -L ${TD}/${BD}/lib ${xLDFLAGS}
 LIBS     = ${xLIBS} ${SYSLIBS}
 FILES    = ${xFILES}

@@ -29,7 +29,7 @@
 set -e
 cd $(dirname $0)
 
-lgwversion="V${lgwversion:-1.0.5}"
+lgwversion="V${lgwversion:-2.1.0}"
 
 if [[ ! -d git-repo ]]; then
     git clone https://github.com/Lora-net/sx1302_hal.git git-repo

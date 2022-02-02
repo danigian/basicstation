@@ -702,6 +702,7 @@ int sx130xconf_start (struct sx130xconf* sx130xconf, u4_t cca_region) {
         sx130xconf->device, sx130xconf->pps ? "en":"dis"
     );
     (void) sys_deviceMode; // TODO: Add device mode to sx1302 hal
+#elif defined(CFG_disablelgwsysdev) // do nothing for ftdi usb
 #else
     LOG(MOD_RAL|INFO, "Station device: %s (PPS capture %sabled)", sx130xconf->device, sx130xconf->pps ? "en":"dis");
     lgwx_device_mode = sys_deviceMode;

@@ -1,0 +1,40 @@
+diff --git a/src/fast.c b/src/fast.c
+index 8cf66b0..d2daa10 100644
+--- a/src/fast.c
++++ b/src/fast.c
+@@ -10,6 +10,8 @@
+ #include "mpsse.h"
+ #include "support.h"
+ 
++unsigned char fast_rw_buf[SPI_RW_SIZE + CMD_SIZE];
++
+ /* Builds a block buffer for the Fast* functions. For internal use only. */
+ int fast_build_block_buffer(struct mpsse_context *mpsse, uint8_t cmd, unsigned char *data, int size, int *buf_size)
+ {
+diff --git a/src/mpsse.c b/src/mpsse.c
+index 456b51b..a24d6ab 100644
+--- a/src/mpsse.c
++++ b/src/mpsse.c
+@@ -56,7 +56,7 @@ struct mpsse_context *MPSSE(enum modes mode, int freq, int endianess)
+ 
+ 	for(i=0; supported_devices[i].vid != 0; i++)
+ 	{
+-		if((mpsse = Open(supported_devices[i].vid, supported_devices[i].pid, mode, freq, endianess, IFACE_A, NULL, NULL)) != NULL)
++		if((mpsse = Open(supported_devices[i].vid, supported_devices[i].pid, mode, freq, endianess, IFACE_B, NULL, NULL)) != NULL)
+ 		{
+ 			if(mpsse->open)
+ 			{
+diff --git a/src/mpsse.h b/src/mpsse.h
+index 4a00eed..2d00d55 100644
+--- a/src/mpsse.h
++++ b/src/mpsse.h
+@@ -218,7 +218,7 @@ swig_string_data Transfer(struct mpsse_context *mpsse, char *data, int size);
+ char *Read(struct mpsse_context *mpsse, int size);
+ char *Transfer(struct mpsse_context *mpsse, char *data, int size);
+ 
+-unsigned char fast_rw_buf[SPI_RW_SIZE + CMD_SIZE];
++extern unsigned char fast_rw_buf[SPI_RW_SIZE + CMD_SIZE];
+ int FastWrite(struct mpsse_context *mpsse, char *data, int size);
+ int FastRead(struct mpsse_context *mpsse, char *data, int size);
+ int FastTransfer(struct mpsse_context *mpsse, char *wdata, char *rdata, int size);
+ 
